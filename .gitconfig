@@ -1,0 +1,9 @@
+[user]
+	name = Lolzen
+	email = funer@gmx.at
+[cola]
+	fontdiff = Monospace,9,-1,5,50,0,0,0,0,0
+[color]
+	ui = auto
+[push]
+	default = matching
