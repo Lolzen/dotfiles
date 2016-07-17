@@ -1,0 +1,58 @@
+!config
+URxvt*depth: 32
+URxvt*background: [30]#000000
+URxvt*foreground: [100]#33b5e5
+URxvt*borderColor: [100]#33b5e5
+URxvt.scrollBar: false
+if [ $HOSTNAME = "void-pc" ]; then
+	URxvt*geometry: 110x20+910+738
+fi
+URxvt*saveLines: 1000
+URxvt*font: xft:Droid Sans Mono:style=regular:pixelsize=13
+URxvt*letterSpace: 1
+URxvt*antialias: false
+!URxvt*buffered: false
+URxvt*internalBorder: 1
+URxvt*borderLess: true
+URxvt*colorUL: [100]#00ff88
+URxvt*highlightColor: [100]#ffffff
+URxvt*highlightTextColor: [100]#000000
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: /usr/bin/chromium
+URxvt.matcher.button: 1
+
+! black
+!*color0: #363636
+*color0: #ff6b6b
+!*color8: #222222
+*color8: #444444
+
+! red
+*color1: #C38277
+*color9: #C36C5D
+
+! green
+*color2:  #93C35D
+*color10: #5F7E3C
+
+! yellow
+*color3:  #C6D262
+*color11: #D0BE63
+
+! blue
+*color4:  #328BF4
+*color12: #225EA4
+
+! magenta
+*color5:  #FE71E7
+*color13: #9F21E4
+
+! cyan
+*color6:  #33b5e5
+*color14: #107887
+
+! white
+*color7:  #dbdbdb
+*color15: #d4d4d4
+
+
