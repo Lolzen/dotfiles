@@ -1,0 +1,65 @@
+--[[	Conky config file for conky 1.10    ]]--
+
+conky.config = {
+	-->> window config <<--
+	own_window = true,
+	own_window_transparent = true,
+	own_window_type = 'Normal',
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	own_window_class = 'Conky',
+
+	-->> dimensions & positioning <<--
+	minimum_height = 5,
+	minimum_width = 5,
+	alignment = 'top_left',
+	gap_x = 80,
+	gap_y = 0,
+	border_width = 1,
+
+	-->> behavior <<--
+	update_interval = 1.0,
+	cpu_avg_samples = 2,
+	net_avg_samples = 2,
+	background = false,
+	draw_borders = false,
+	draw_graph_borders = false,
+	draw_outline = false,
+	draw_shades = false,
+	no_buffers = true,
+	double_buffer = true,
+	out_to_console = false,
+	out_to_stderr = false,
+	extra_newline = false,
+	stippled_borders = 0,
+	use_spacer = 'none',
+	show_graph_scale = false,
+	show_graph_range = false,
+
+	-->> fonts <<--
+	font = 'Droid Sans:size=9',
+	use_xft = true,
+	xft_alpha = 1,
+	uppercase = false,
+	format_human_readable = true,
+	override_utf8_locale = true,
+
+	-->> colors <<--
+	default_color = 'white',
+	default_shade_color = 'black',
+	default_outline_color = 'white',
+	color1 = '33b5e5', --> blue <
+	color2 = 'ffffff', --> white <
+
+	-->> mpd stuff <<--
+	mpd_host = localhost,
+}
+
+conky.text = [[
+${color1}• HDD${color2}  /: ${fs_used /}/${fs_size /} • ${fs_used_perc /}% ${fs_bar 9, 100 /}  /home: ${fs_used /home}/${fs_size /home} • ${fs_used_perc /home}% ${fs_bar 9, 100 /home} ${color1} • CPU${color2} Temp: ${execi 30 sensors | grep -m1 "temp1:" | cut -d "+" -f2 | cut -c1-7} • Usage $cpu% ${cpubar cpu0 9, 100} ${color1} • GPU${color2} Temp: ${execi 30 nvidia-settings -t -q GPUCoreTemp}°C • Freq: ${execi 30 nvidia-settings -t -q GPUCurrentClockFreqs}MHz ${color1} • MEM${color2} $mem/$memmax • $memperc% ${membar 9, 100} ${color1} • WLAN${color2} Signal: ${wireless_link_bar 9, 100 wlp5s0}
+#${font Arial Black:size=10}${mpd_artist}${font}
+#${font Arial Black:size=8}${mpd_title}${font}
+
+#${execi 1 ~/bin/lyriki}
+
+
+]]
