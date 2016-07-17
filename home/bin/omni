@@ -1,0 +1,89 @@
+#!/bin/bash
+
+#	omni
+#	a script to ease compiling and stuff
+#
+
+src_dir=/home/$USER/omni
+device=angler
+
+
+case "$1" in
+--setup)
+cd $src_dir
+. build/envsetup.sh
+breakfast $device
+repo sync -j4
+;;
+-s | --sync)
+cd $src_dir
+repo sync -j16 --force-sync
+;;
+-c | --compile)
+export EXPERIMENTAL_USE_JAVA8=true
+export JAVA_HOME=/usr/libexec/java_home -v '1.8*'
+export LC_ALL=C
+cd $src_dir
+. build/envsetup.sh
+brunch $device
+cp out/target/product/$device/omni-*-HOMEMADE.zip /home/$USER/
+;;
+-d | --delete)
+cd $src_dir
+make clobber
+;;
+-k | --kernel)
+export EXPERIMENTAL_USE_JAVA8=true
+export JAVA_HOME=/usr/libexec/java_home -v '1.8*'
+export LC_ALL=C
+cd $src_dir
+. build/envsetup.sh
+breakfast $device
+make bootimage
+;;
+-cp | --cherypick)
+###define cherry-picks here
+#->Theme Engine<-#
+#[6 patches}
+#[1/6]
+cd $src_dir/frameworks/base
+git fetch https://gerrit.omnirom.org/android_frameworks_base refs/changes/93/11693/2 && git cherry-pick FETCH_HEAD
+#[2/6]
+cd $src_dir/packages/apps/Settings
+git fetch https://gerrit.omnirom.org/android_packages_apps_Settings refs/changes/76/11676/1 && git cherry-pick FETCH_HEAD
+#[3/6]
+cd $src_dir/packages/apps/Contacts
+git fetch https://gerrit.omnirom.org/android_packages_apps_Contacts refs/changes/05/11705/1 && git cherry-pick FETCH_HEAD
+#[4/6]
+cd $src_dir/packages/apps/ContactsCommon
+git fetch https://gerrit.omnirom.org/android_packages_apps_ContactsCommon refs/changes/75/11675/1 && git cherry-pick FETCH_HEAD
+#[5/6]
+cd $src_dir/packages/apps/Dialer
+git fetch https://gerrit.omnirom.org/android_packages_apps_Dialer refs/changes/74/11674/1 && git cherry-pick FETCH_HEAD
+#[6/6]
+cd $src_dir/packages/apps/InCallUI
+git fetch https://gerrit.omnirom.org/android_packages_apps_InCallUI refs/changes/73/11673/1 && git cherry-pick FETCH_HEAD
+###outdated/unnedded cherry-picks
+#mako: Temporarily disable crypto until TWRP crypto is fixed
+#cd $src_dir/device/lge/mako
+#git fetch https://gerrit.omnirom.org/android_device_lge_mako refs/changes/32/10932/1 && git cherry-pick FETCH_HEAD
+;;
+*)
+echo '########################## config ###########################'
+echo 'source code directory:'
+echo $src_dir
+echo '#############################################################'
+echo '######################## commands ###########################'
+echo 'omni [options]'
+echo '--setup'
+echo 'breakfast mako & sync repo'
+echo '-s | --sync'
+echo 'update omnirom repo to latest'
+echo '-c | --compile'
+echo 'compiles the source code and copies the zip to ~/<omniROM.zip> hen finished'
+echo '-d | --delete'
+echo 'delete anything compiled'
+echo '-k | -kernel'
+echo 'compile only the kernel as bootimage'
+;;
+esac

@@ -1,0 +1,161 @@
+#!/bin/sh
+
+#
+#	a simple script to make stuff easier; i'm lazy
+#	!COPY TO /home/$USER/bin AND MAKE IT EXECUTABLE (chmod a+x)!
+#
+
+
+##	config variables
+#homedir		does not need to be edited normally
+home_dir=/home/$USER
+
+#kernel naming scheme
+kernel_name=420Kernel
+
+#kernel version
+kernel_version=testing_r1
+
+#kernel zip output dir after zipping (kernel -z)
+zip_output=$home_dir/kernel
+
+#which device config to use (codename)
+defconfig=angler_defconfig
+
+#kernel_src_dir:	/path/to/kernel_src
+kernel_src_dir=$home_dir/kernel/kernel_angler
+
+#zip_dir: 		/path/to/zip_dir
+zip_dir=$home_dir/kernel/zip
+
+#drive_dir: 		/path/to/drive_dir 
+#!!needs https://github.com/odeke-em/drive to work!!
+#drive_dir=/home/$USER/drive
+
+#build android 32bit or 64bit
+android_bit_version=64
+
+## set the correct architecture path
+if [ $android_bit_version = 64 ]; then
+toolchain_arch=arm64
+toolchain_folder_scheme=aarch64-linux-android-
+else
+toolchain_arch=arm
+toolchain_folder_scheme=arm-linux-androideabi-
+fi
+
+#version and location of the toolchain to use
+gcc_version=4.9
+gcc_dir=$home_dir/kernel/$toolchain_folder_scheme$gcc_version/bin
+
+#how many jobs to be used for compiling
+jobs=4
+
+
+##	the actual script fuction
+case "$1" in
+-t | --test)
+echo "test"
+;;
+-c | --compile)
+cd $kernel_src_dir
+export PATH=$PATH:$gcc_dir
+export ARCH=$toolchain_arch
+export SUBARCH=$toolchain_arch
+export CROSS_COMPILE=$toolchain_folder_scheme
+make $defconfig
+make -j$jobs
+;;
+-bi | --bootimage)
+#need abootimg-git package
+#abootimg --create newboot.img -f bootimg.cfg -k linux/arch/arm/boot/zImage-dtb -r initrd.img
+cd $home_dir/420kernels
+abootimg --create 420boot.img -f /home/$USER/kernel_tools/boot_img_mmb29m/bootimg.cfg -k /home/$USER/kernel_angler/arch/arm64/boot/Image.gz-dtb -r  /home/$USER/kernel_tools/boot_img_mmb29m/initrd.img
+
+#cd §home_dir/420kernels
+#abootimg -u /home/$USER/420Kernels/boot.img -k /home/$USER/kernel_angler/arch/arm64/boot/Image.gz-dtb -r 
+#abootimg -c boot.img -k Image.gz-dtb
+;;
+-m | --menuconfig)
+cd $kernel_src_dir
+export PATH=$PATH:$gcc_dir
+export ARCH=$toolchain_arch
+export SUBARCH=$toolchain_arch
+export CROSS_COMPILE=$toolchain_folder_scheme
+make menuconfig
+;;
+-d | --delete)
+cd $kernel_src_dir
+make clean
+if [ $android_bit_version = 64 ]; then
+rm -rf $kernel_src_dir/arch/arm64/boot/{Image,Image.gz,Image.gz-dtb}
+else
+rm -rf $kernel_src_dir/arch/arm/boot/zImage
+rm -rf $zip_dir/kernel/zImage
+fi
+;;
+-z | --zip)
+if [ $android_bit_version = 64 ]; then
+cp $kernel_src_dir/arch/arm64/boot/Image $zip_dir/zImage
+else
+cp $kernel_src_dir/arch/arm/boot/zImage $zip_dir/zImage
+fi
+cd $zip_dir
+zip -r9 kernel.zip *
+if [ ! "$2" ]; then
+mv kernel.zip $zip_output/$kernel_name-$kernel_version-$(date +%y-%m-%d).zip
+else
+mv kernel.zip $zip_output/$kernel_name-$kernel_version-$(date +%y-%m-%d)-$2.zip
+fi
+#cd $drive_dir
+#drive push -no-prompt=true
+;;
+-f | --fresh)
+kernel -d && kernel -c
+;;
+*)
+echo $(tput setaf 1)\ '########################## config ###########################'
+echo $(tput setaf 2)\ 'home directory:'
+echo $(tput setaf 3)\ $home_dir
+echo $(tput setaf 2)\ 'kernel name:'
+echo $(tput setaf 3)\ $kernel_name
+echo $(tput setaf 2)\ 'kernel version:'
+echo $(tput setaf 3)\ $kernel_version
+echo $(tput setaf 2)\ 'zip output dir:'
+echo $(tput setaf 3)\ $zip_output
+#
+echo $(tput setaf 2)\ 'defconfig:'
+echo $(tput setaf 3)\ $defconfig
+echo $(tput setaf 2)\ 'kernel source code directory:'
+echo $(tput setaf 3)\ $kernel_src_dir
+echo $(tput setaf 2)\ 'zip directory:'
+echo $(tput setaf 3)\ $zip_dir
+if [ $drive_dir ]; then
+echo $(tput setaf 2)\ 'drive directory:'
+echo $(tput setaf 3)\ $drive_dir
+fi
+echo $(tput setaf 2)\ 'bit version:'
+echo $(tput setaf 3)\ $toolchain_arch
+echo $(tput setaf 2)\ 'toolchain folder scheme:'
+echo $(tput setaf 3)\ $toolchain_folder_scheme
+echo $(tput setaf 2)\ 'target toolchain version:'
+echo $(tput setaf 3)\ $gcc_version
+echo $(tput setaf 2)\ 'toolchain directory to the target toolchain:'
+echo $(tput setaf 3)\ $gcc_dir
+echo $(tput setaf 2)\ 'number of jobs to use at compilation:'
+echo $(tput setaf 3)\ $jobs
+echo $(tput setaf 1)\ '#############################################################'
+echo $(tput setaf 7)\ 'USAGE: kernel [options]'
+echo $(tput setaf 10)\ '-c | --compile'
+echo $(tput setaf 6)\ 'compiles the kernel'
+echo $(tput setaf 10)\ '-d | --delete'
+echo $(tput setaf 6)\ 'delete anything compiled'
+echo $(tput setaf 10)\ '-z | --zip'
+echo $(tput setaf 6)\ 'zip the zImage with AnyKernel, to get a flashable zip and push to google drive'
+echo $(tput setaf 7)\ '[advanced options]'
+echo $(tput setaf 10)\ '-m | --menuconfig'
+echo $(tput setaf 6)\ 'generate a new kernel config'
+echo $(tput setaf 10)\ '-f | --fresh'
+echo $(tput setaf 6)\ 'delete anything compiled and starts copiling immidietly afterwards'
+;;
+esac

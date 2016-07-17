@@ -1,0 +1,20 @@
+#!/bin/sh
+
+src_dir=/home/$USER/void_kernels
+kernel_version=4.4-rc8
+use_config_version=4.3.3_2
+
+
+cd $src_dir
+wget https://cdn.kernel.org/pub/linux/kernel/v4.x/testing/linux-$kernel_version.tar.xz
+tar xf linux-$kernel_version.tar.xz
+cd linux-$kernel_version
+cp /boot/config-$use_config_version .config
+#make -j4
+#sudo make modules_install firmware_install
+#sudo cp System.map /boot/System.map-$kernel_version
+#sudo cp arch/x86-64/boot/bzImage /boot/vmlinuz-$kernel_version
+#sudo cp .config /boot/config-$kernel_version
+#sudo dracut -f initramfs-$kernel_version.img $kernel_version
+#sudo cp initramfs-$kernel_version.img /boot/
+echo "New kernel compiled & installed. Enjoy!"
