@@ -1,0 +1,329 @@
+#navbotright a {
+    color: #555555;
+}
+
+#navtopright {
+    background-color: #222222;
+}
+
+#navtopright a {
+    background-color: #222222;
+    color: #555555;
+}
+
+#qrEmail {
+    background-color: #333333;
+    color: #999999;
+}
+
+#qrForm div {
+    background-color: #333333;
+    color: #999999;
+}
+
+#qrForm div input {
+    background-color: #333333;
+    color: #999999;
+}
+
+#qrForm div textarea {
+    background-color: #333333;
+    color: #999999;
+}
+
+#recaptcha_response_field {
+    border-color: #333333;
+    color: #333333;
+}
+
+#settingsWindowLinkBot {
+    color: #555555;
+}
+
+#styleSelector {
+    background-color: #333333;
+    border-color: #444444;
+    color: #555555;
+}
+
+#watch-41455039-g a {
+    color: #999999;
+}
+
+.yotsuba_b_new .backlink a {
+    color: #33b5e5;
+}
+
+a.open-qr-link {
+    color: #555555;
+    text-decoration: none;
+}
+
+a.quotelink {
+    text-decoration: none;
+}
+
+blockquote.postMessage {
+    color: #999999;
+}
+
+blockquote.postMessage a {
+    color: #33b5e5;
+    text-decoration: none;
+}
+
+body {
+    background: none;
+    color: #fff;
+    margin: 0;
+    overflow-x: hidden;
+    padding: 0 0 10px;
+    position: relative;
+}
+
+body.board_g.yotsuba_b_new.ws form {
+    margin-bottom: 12px;
+}
+
+/* url: boards.4chan.org */
+
+/*removes ads*/
+
+div.boardBanner {
+    background-color: #222222;
+    color: #33b5e5;
+}
+
+div.boardSubtitle {
+    color: #555555;
+}
+
+div.boardSubtitle a {
+    color: #555555;
+}
+
+div.center {
+    color: #555555;
+    display: none;
+}
+
+div.center a {
+    color: #666666;
+}
+
+div.deleteform {
+    color: #999999;
+    margin-right: 10px;
+}
+
+div.deleteform input {
+    background-color: #333333;
+    border-color: #444444;
+    color: #555555;
+}
+
+div.drag.postblock {
+    background-color: #444444;
+    color: #33b5e5;
+}
+
+div.extPanel.reply {
+    background-color: #444444;
+    border-color: #999999;
+}
+
+div.fileText {
+    color: #555555;
+}
+
+div.fileText a {
+    color: #555555;
+}
+
+div.globalMessage.hideMobile {
+    margin-bottom: 12px;
+}
+
+div.globalMessage.hideMobile strong {
+    color: #33b5e5;
+}
+
+div.navLinks.desktop {
+    color: #555555;
+}
+
+div.navLinks.desktop a {
+    color: #555555;
+}
+
+div.navLinks.navLinksBot.desktop {
+    background-color: #222222;
+    color: #555555;
+    margin-right: 10px;
+}
+
+div.navLinks.navLinksBot.desktop a {
+    color: #555555;
+}
+
+div.op {
+    background-color: #222222;
+    border-width: 0;
+}
+
+div.open-qr-wrap {
+    color: #555555;
+    font-size: 10px;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+div.pagelist.desktop {
+    background-color: #222222;
+    color: #555555;
+    border-width: 0;
+}
+
+div.pages a {
+    color: #555555;
+}
+
+div.passNotice a {
+    color: #555555;
+}
+
+div.post.highlight {
+    background-color: #111111;
+}
+
+div.post.reply {
+    background-color: #1d1d1d;
+    border-width: 0;
+    color: #555555;
+}
+
+div.post.reply.highlight {
+    background-color: #111111;
+}
+
+div.postContainer.replyContainer {
+    color: #222222;
+}
+
+div.postInfo.desktop input {
+    display: none;
+}
+
+div.postingMode.desktop {
+    background-color: #222222;
+    color: #555555;
+}
+
+div.reply:target {
+    background-color: #111111;
+}
+
+div.sideArrows {
+    color: #555555;
+}
+
+div.stylechanger {
+    color: #999999;
+    margin-right: 10px;
+}
+
+form.pageSwitcherForm input {
+    background-color: #333333;
+    border-color: #444444;
+    color: #999999;
+}
+
+hr {
+    display: none;
+}
+
+html {
+    background-color: #222222;
+    color: #555555;
+}
+
+input.presubmit {
+    background-color: #333333;
+    color: #999999;
+}
+
+span.boardList {
+    color: #555555;
+}
+
+span.boardList a {
+    background-color: #222222;
+    color: #33b5e5;
+}
+
+span.dateTime {
+    color: #555555;
+}
+
+span.deadlink {
+    color: #b95752;
+}
+
+span.name {
+    color: #555555;
+    text-decoration: none;
+}
+
+span.postNum.desktop a {
+    color: #555555;
+}
+
+span.postertrip {
+    color: #634c31;
+    text-decoration: none;
+}
+
+span.quote {
+    color: #338844;
+}
+
+span.subject {
+    color: #555555;
+}
+
+tbody tr td {
+    background-color: #222222;
+    border-color: #333333;
+    color: #333333;
+}
+
+td.desktop {
+    background-color: #222222;
+    border-color: #333333;
+    color: #333333;
+}
+
+tr td input {
+    background-color: #222222;
+    border-color: #333333;
+    color: #555555;
+}
+
+tr td textarea {
+    background-color: #222222;
+    border-color: #333333;
+    color: #555555;
+}
+
+ul.rules li a {
+    color: #555555;
+}
+
+span.absBotDisclaimer {
+    color: #555555;
+}
+
+a.depagelink {
+    color: #aaaaaa;
+}
+
