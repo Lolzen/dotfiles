@@ -1,0 +1,55 @@
+[global]
+    font = DroidSans Mono 12
+
+    format = "%I %a: %s %b %p"
+    sort = yes
+    indicate_hidden = yes
+    alignment = left
+    bounce_freq = 0
+    show_age_threshold = 60;
+
+    word_wrap = yes
+    ignore_newline = no
+
+    geometry = "1800x150+20+20"
+    shrink = yes
+    transparency = 0
+
+    idle_threshold = 20
+
+    monitor = 0
+    follow = none
+
+    sticky_history = yes
+    show_indicators = yes
+    line_height = 0
+
+    separator_height = 2
+
+    #separator_color = auto
+    seperator_color = "#33b5e5"
+
+    padding = 1
+    horizontal_padding = 9
+
+    browser = /usr/bin/chromium -new-tab
+
+[shortcuts]
+    close = mod4+x
+    close_all = mod4+ctrl+x
+    history = mod4+grave
+
+[urgency_low]
+    background = "#1b191a"
+    foreground = "#33b5e5"
+    timeout = 10
+
+[urgency_normal]
+    background = "#1b191a"
+    foreground = "#33b5e5"
+    timeout = 10
+
+[urgency_critical]
+    background = "#1b191a"
+    foreground = "#e5b533"
+    timeout = 0
