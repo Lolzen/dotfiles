@@ -19,7 +19,7 @@ alias sf='screenfetch'
 alias obclass='obxprop | grep "^_OB_APP"'
 
 # [void linux specific]
-if [ $HOSTNAME = "void-pc" ]; then
+if [ $HOSTNAME = "void-pc" ] || [ $HOSTNAME = "void-netbook" ]; then
 	# xbps aliases
 	alias install='sudo xbps-install -S'
 	alias update='sudo xbps-install -Syu'
@@ -28,6 +28,28 @@ if [ $HOSTNAME = "void-pc" ]; then
 
 	# Android aliases
 	alias android='sh /home/gee/android-sdk-linux/tools/android'
+elif [ $HOSTNAME = "arch-pc" ]; then
+	# system cleanup tools
+	alias cleansys='sudo pacman -Rs `pacman -Qqtd | grep -Fv -f <(pacman -Qqtdm)` && sudo pacman -Rs $(pacman -Qqtdm)'
+	alias lostfiles='sudo lostfiles cat > ~/lostfiles.txt && leafpad ~/lostfiles.txt'
+elif [ $HOSTNAME = "gentoo-pc" ]; then
+	# emerge aliases
+	alias emerge='sudo emerge'
+	alias emergedeps='sudo emerge --ask --changed-use --deep @world' #emerges missing dependencies
+	alias reemerge='emerge -ave system && emerge -ave world' ##reemerge system & world
+	alias cleansys='emerge -av --depclean && eclean -d distfiles' #remove orphans & old packages
+	alias updatesys='emerge -DuvaN world && revdep-rebuild'
+	alias prelink="sudo prelink -afmR"
+
+	# kernel aliases
+	alias listtkernel='sudo eselect kernel list'
+	alias newkernel='sudo genkernel --gconfig all --no-zfs' #compile a new kernel
+	alias testkernel='sudo genkernel --gconfig all --kername test --no-zfs' #compile a new kernel
+	alias updatekernel='sudo genkernel --oldconfig --gconfig all --no-zfs' #use old kernel config for new kernel
+
+	#config file aliases
+	alias pu='sudo leafpad /etc/portage/package.use'
+	alias mc='sudo leafpad /etc/portage/make.conf'
 fi
 
 # Custom bash prompt via kirsle.net/wizards/ps1.html
