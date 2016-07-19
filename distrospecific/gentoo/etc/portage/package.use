@@ -1,0 +1,27 @@
+app-admin/conky truetype
+dev-libs/elfutils static-libs
+dev-libs/libxml2  icu
+dev-perl/Linux-DesktopFiles ~amd64
+dev-python/imaging -truetype
+dev-vcs/subversion perl -dso
+gnome-base/gvfs mtp
+#media-gfx/byzanz -lm -dso
+media-libs/harfbuzz  icu
+#media-libs/imlib2 asm
+media-libs/mesa gbm xa
+media-sound/mpd flac -ffmpeg
+media-sound/ncmpcpp taglib
+media-video/nvidia-settings gtk
+net-wireless/wpa_supplicant qt4
+sys-libs/zlib  minizip
+x11-base/xorg-server udev
+x11-libs/libdrm  libkms
+x11-misc/slim -consolekit
+x11-misc/obmenu-generator ~amd64
+x11-misc/tint2 tint2conf
+x11-terms/rxvt-unicode 256-color xft alt-font-width  wcwidth unicode3 -vanilla
+www-client/chromium  aura bindist custom-cflags -pulseaudio
+media-video/vlc a52 dts dvd ffmpeg mp3 mpeg win32codecs ncurses opengl sdl skins truetype wxwindows xv qt4 -qt5
+virtual/ffmpeg threads
+media-video/ffmpeg threads
+x11-drivers/ati-drivers modules multilib qt4
