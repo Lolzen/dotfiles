@@ -1,0 +1,22 @@
+mpd_host = "localhost"
+mpd_port = "6600"
+mpd_music_dir = "~/Music"
+playlist_directory "~/.config/mpd/playlists
+
+progressbar_look = "─o╶"
+mouse_support = "no"
+
+song_list_format = "{ $7%a ⠂ }{%t}$R{$7%l }"
+song_status_format = "$7%t on %b by %a"
+main_window_highlight_color = "cyan"
+header_visibility = "no"
+statusbar_visibility = "no"
+colors_enabled = "yes"
+now_playing_prefix = "$b"
+now_playing_suffix = "$/b"
+autocenter_mode = "yes"
+centered_cursor = "yes"
+titles_visibility = "no"
+discard_colors_if_item_is_selected = "yes"
+progressbar_color = "cyan"
+progressbar_boldness = "no"
