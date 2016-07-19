@@ -25,6 +25,7 @@ if [ $HOSTNAME = "void-pc" ] || [ $HOSTNAME = "void-netbook" ]; then
 	alias update='sudo xbps-install -Syu'
 	alias remove='sudo xbps-remove'
 	alias search='sudo xbps-query -Rs'
+	alias kpurge='sudo vkpurge rm all'
 
 	# Android aliases
 	alias android='sh /home/gee/android-sdk-linux/tools/android'
