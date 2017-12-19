@@ -78,7 +78,6 @@ body {
     margin: 0;
     overflow-x: hidden;
     padding: 0 0 10px;
-    position: relative;
 }
 
 body.board_g.yotsuba_b_new.ws form {
