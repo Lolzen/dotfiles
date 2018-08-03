@@ -16,13 +16,15 @@
 #
 #xfce-mcs-manager &
 
+compton --config ~/.compton.conf -b & #eye-candy
 dunst -config ~/.dunstrc & #start dunst notification daemon
 conky -c ~/.conkyrc & #start conky (has to be started before compton)
-nitrogen --restore & #restore selected wallpaper
 tint2 & #panel
 volumeicon & #system tray volumeicon
 #clipit & #copy/paste between programs
 urxvt & #Start a terminal on boot
 thunar --daemon & #deamon mode to enable mounting internal disks
-nm-applet #Network Manager applet
-compton --config ~/.compton.conf -b & #eye-candy
+sudo NetworkManager &
+nm-applet & #Network Manager applet
+nitrogen --restore & #restore selected wallpaper
+

@@ -3,7 +3,7 @@ mpd_port = "6600"
 mpd_music_dir = "~/Music"
 playlist_directory "~/.config/mpd/playlists
 
-progressbar_look = "─o╶"
+progressbar_look = "─•╶"
 mouse_support = "no"
 
 song_list_format = "{ $7%a ⠂ }{%t}$R{$7%l }"
@@ -20,3 +20,4 @@ titles_visibility = "no"
 discard_colors_if_item_is_selected = "yes"
 progressbar_color = "cyan"
 progressbar_boldness = "no"
+playlist_display_mode = classic

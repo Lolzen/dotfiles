@@ -8,8 +8,21 @@ if [ -d "$HOME/bin" ]; then
   PATH="$HOME/bin:$PATH"
 fi
 
+#mpd
+export MPD_HOST=/home/gee/.config/.mpd/socket
+
 # use nano as standard editor
 export EDITOR=nano
+
+#enable Google API keys for Chromium
+#export GOOGLE_API_KEY="AIzaSyA7gvFXQHg3r13FcCq8nQIGL6wiGBiDSTE"
+#export GOOGLE_DEFAULT_CLIENT_ID="936940932425-dbdesdr7vqs0enej92q3bbrnoa82tddq.apps.googleusercontent.com"
+#export GOOGLE_DEFAULT_CLIENT_SECRET="PbXYxRqlpr3-Io5M-SlLCSxV"
+
+#use CCASHE
+#export PATH=~/bin:$PATH
+#export USE_CCACHE=1
+# instal ccache erst
 
 # common aliases
 alias ls='ls --color=auto'
@@ -17,6 +30,7 @@ alias reboot='sudo reboot'
 alias shutdown='sudo shutdown -h now'
 alias sf='screenfetch'
 alias obclass='obxprop | grep "^_OB_APP"'
+alias teamspeak='sh ~/TeamSpeak3-Client-linux_amd64/ts3client_runscript.sh'
 
 # [void linux specific]
 if [ $HOSTNAME = "void-pc" ] || [ $HOSTNAME = "void-netbook" ]; then

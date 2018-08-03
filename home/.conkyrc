@@ -12,7 +12,7 @@ conky.config = {
 	minimum_height = 5,
 	minimum_width = 5,
 	alignment = 'top_left',
-	gap_x = 80,
+	gap_x = 300,
 	gap_y = 0,
 	border_width = 1,
 
@@ -55,7 +55,7 @@ conky.config = {
 }
 
 conky.text = [[
-${color1}• HDD${color2}  /: ${fs_used /}/${fs_size /} • ${fs_used_perc /}% ${fs_bar 9, 100 /}  /home: ${fs_used /home}/${fs_size /home} • ${fs_used_perc /home}% ${fs_bar 9, 100 /home} ${color1} • CPU${color2} Temp: ${execi 30 sensors | grep -m1 "temp1:" | cut -d "+" -f2 | cut -c1-7} • Usage $cpu% ${cpubar cpu0 9, 100} ${color1} • GPU${color2} Temp: ${execi 30 nvidia-settings -t -q GPUCoreTemp}°C • Freq: ${execi 30 nvidia-settings -t -q GPUCurrentClockFreqs}MHz ${color1} • MEM${color2} $mem/$memmax • $memperc% ${membar 9, 100} ${color1} • WLAN${color2} Signal: ${wireless_link_bar 9, 100 wlp5s0}
+${color1}• HDD${color2}  /: ${fs_used /}/${fs_size /} • ${fs_used_perc /}% ${fs_bar 9, 100 /}  /home: ${fs_used /home}/${fs_size /home} • ${fs_used_perc /home}% ${fs_bar 9, 100 /home} ${color1} • CPU${color2} Temp: ${execi 2 sensors | grep -m1 "temp1:" | cut -d "+" -f2 | cut -c1-7} • Usage $cpu% ${cpubar cpu1 9, 25} ${cpubar cpu2 9, 25} ${cpubar cpu3 9, 25} ${cpubar cpu4 9, 25} ${color1} • GPU${color2} Temp: ${execi 2 nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits}°C • Freq: ${execi 2 nvidia-settings -t -q [gpu:0]/GPUCurrentClockFreqs | cut -c 1-4}MHz ${color1} • MEM${color2} $mem/$memmax • $memperc% ${membar 9, 100} ${color1}
 #${font Arial Black:size=10}${mpd_artist}${font}
 #${font Arial Black:size=8}${mpd_title}${font}
 

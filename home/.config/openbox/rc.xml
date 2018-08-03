@@ -328,12 +328,6 @@
         <command>scrot</command>
       </action>
     </keybind>
-    <!-- Lighthouse "Search" -->
-    <keybind key="F1">
-      <action name="Execute">
-        <command>lighthouse</command>
-      </action>
-    </keybind>
   </keyboard>
   <mouse>
     <dragThreshold>1</dragThreshold>
@@ -792,18 +786,7 @@
     <application name="urxvt">
       <skip_taskbar>yes</skip_taskbar>
     </application>
-    <application class="Chromium-dev">
-      <decor>no</decor>
-      <position force="yes">
-        <x>20</x>
-        <y>40</y>
-      </position>
-      <size>
-        <width>960</width>
-        <height>1000</height>
-      </size>
-    </application>
-    <application class="chromium">
+    <application class="Chromium">
       <decor>no</decor>
       <position force="yes">
         <x>20</x>

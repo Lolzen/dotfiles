@@ -4,13 +4,13 @@ URxvt*background: [30]#000000
 URxvt*foreground: [100]#33b5e5
 URxvt*borderColor: [100]#33b5e5
 URxvt.scrollBar: false
-if [ $HOSTNAME = "void-pc" ]; then
-	URxvt*geometry: 110x20+910+738
-fi
+!URxvt*geometry: 110x20+910+738
+URxvt*geometry: 110x18+910+738
 URxvt*saveLines: 1000
 URxvt*font: xft:Droid Sans Mono:style=regular:pixelsize=13
+!URxvt*lineSpace: -15
 URxvt*letterSpace: 1
-URxvt*antialias: false
+URxvt*antialias: true
 !URxvt*buffered: false
 URxvt*internalBorder: 1
 URxvt*borderLess: true

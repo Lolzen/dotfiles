@@ -8,3 +8,7 @@
 
 # To set your keyboard layout, you need to modify your X config:
 # http://www.google.com/search?q=how+to+set+keyboard+layout+xorg
+
+env GOOGLE_API_KEY="AIzaSyA7gvFXQHg3r13FcCq8nQIGL6wiGBiDSTE"
+env GOOGLE_DEFAULT_CLIENT_ID="936940932425-dbdesdr7vqs0enej92q3bbrnoa82tddq.apps.googleusercontent.com"
+env GOOGLE_DEFAULT_CLIENT_SECRET="PbXYxRqlpr3-Io5M-SlLCSxV"
