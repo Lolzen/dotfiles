@@ -28,7 +28,7 @@ export EDITOR=nano
 alias ls='ls --color=auto'
 alias reboot='sudo reboot'
 alias shutdown='sudo shutdown -h now'
-alias sf='screenfetch'
+alias sf='neofetch'
 alias obclass='obxprop | grep "^_OB_APP"'
 alias teamspeak='sh ~/TeamSpeak3-Client-linux_amd64/ts3client_runscript.sh'
 
