@@ -1,0 +1,2 @@
+#!/bin/sh
+APULSE_CAPTURE_DEVICE=plughw:2,0 APULSE_PLAYBACK_DEVICE=plughw:2,0 apulse ~/Discord/Discord
