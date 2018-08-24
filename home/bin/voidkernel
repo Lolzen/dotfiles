@@ -1,20 +1,91 @@
 #!/bin/sh
 
+#
+# a basic script to compile kernels for Void Linux
+# optionally with the ca0132 patch by Connor McAdams, which is not upstream (yet)
+# read more: https://github.com/ValveSoftware/SteamOS/issues/221
+# in case something fucked up (with nvidia)
+# sudo dkms remove -m nvidia -v 390.77 -k 4.18.5_1
+#
+die() { yell "$1"; exit $2; }
+
+# config
 src_dir=/home/$USER/void_kernels
-kernel_version=4.4-rc8
-use_config_version=4.3.3_2
+kernel_version=4.18.5
+use_config_version=4.18.2_1
+suffix=_1
+patch_ca0132=true
+with_menuconfig=false
 
+# either cd or create and then cd $scr_dir
+if [ -d "$src_dir" ]; then
+	cd $src_dir
+else
+	mkdir $src_dir
+	cd $src_dir
+fi
 
-cd $src_dir
-wget https://cdn.kernel.org/pub/linux/kernel/v4.x/testing/linux-$kernel_version.tar.xz
-tar xf linux-$kernel_version.tar.xz
+# download kernel source if needed
+if [ -d "linux-$kernel_version" ]; then
+	echo "kernel source already downloaded, skipping download & extraction..."
+else
+	echo "downloading kernel source"
+	wget https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-$kernel_version.tar.xz
+	echo "extracting kernel source"
+	tar xf linux-$kernel_version.tar.xz
+	rm -rf linux-$kernel_version.tar.xz
+fi
+
 cd linux-$kernel_version
-cp /boot/config-$use_config_version .config
-#make -j4
-#sudo make modules_install firmware_install
-#sudo cp System.map /boot/System.map-$kernel_version
-#sudo cp arch/x86-64/boot/bzImage /boot/vmlinuz-$kernel_version
-#sudo cp .config /boot/config-$kernel_version
-#sudo dracut -f initramfs-$kernel_version.img $kernel_version
-#sudo cp initramfs-$kernel_version.img /boot/
-echo "New kernel compiled & installed. Enjoy!"
+
+# apply patch at whish, if needed
+if [ $patch_ca0132 = true ]; then
+	echo "patch option set to true"
+	if [ -f "$src_dir/patched/$kernel_version/patch_ca0132.c" ]; then
+		echo "kernel $kernel_version is already patched, skipping patch step"
+	else
+		echo "applying patch for Creative AE-5"
+		wget https://doc-10-7g-docs.googleusercontent.com/docs/securesc/3rv7d0gn6bq451nj9shjudutgsaj8b8q/c3ds1vcgi48b042hlsdrn2csgjjtcf0d/1535119200000/02934445194421362384/11732050884458976909/1vjA-3bGgK2Pqe-BDtNV2WjyqCoLoY7Sc?e=download
+		rm -rf sound/pci/hda/patch_ca0132.c
+		cp ../patch_ca0132.c sound/pci/hda/
+		if [ -d "patched" ]; then
+			mkdir $src_dir/patched/$kernel_version
+		else
+			mkdir $src_dir/patched
+			mkdir $src_dir/patched/$kernel_version
+		fi
+		mv $src_dir/patch_ca0132.c $src_dir/patched/$kernel_version/patch_ca0132.c
+	fi
+else
+	echo "patch option set to false"
+fi
+
+# attempt to copy a config if none is present
+if [ -f ".config" ]; then
+	echo ".config found"
+else
+	if [ -f "config-$use_config_version" ]; then
+		echo "config-$use_config_version copied to.config"
+		cp /boot/config-$use_config_version .config
+	else
+		die "could not find config-$use_config_version" 113
+	fi
+fi
+
+# menuconfig
+if [ $with_menuconfig = true ]; then
+	make menuconfig
+fi
+
+# compiling
+make -j16 bzImage
+make -j16 modules
+sudo make modules_install
+sudo cp arch/x86/boot/bzImage /boot/vmlinuz-$kernel_version$suffix
+sudo cp .config /boot/config-$kernel_version$suffix
+sudo cp System.map /boot/Sytem.map-$kernel_version$suffix
+sudo dracut -f initramfs-$kernel_version$suffix.img $kernel_version$suffix
+sudo cp initramfs-$kernel_version$suffix.img /boot/
+sudo dkms autoinstall
+sudo update-grub
+echo "New kernel compiled & installed. Reboot & enjoy!"
