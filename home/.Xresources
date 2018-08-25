@@ -4,7 +4,7 @@ URxvt*background: [30]#000000
 URxvt*foreground: [100]#33b5e5
 URxvt*borderColor: [100]#33b5e5
 URxvt.scrollBar: false
-URxvt*geometry: 124x21+910+738
+URxvt*geometry: 124x21+908+738
 !URxvt*geometry: 110x18+910+738
 URxvt*saveLines: 1000
 URxvt*font: xft:Droid Sans Mono:style=regular:pixelsize=12
