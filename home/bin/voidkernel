@@ -7,13 +7,14 @@
 # in case something fucked up (with nvidia)
 # sudo dkms remove -m nvidia -v 390.77 -k 4.18.5_1
 #
-die() { yell "$1"; exit $2; }
+die() { echo "$1"; exit $2; }
 
 # config
 src_dir=/home/$USER/void_kernels
 kernel_version=4.18.5
-use_config_version=4.18.2_1
-suffix=_1
+use_config_version=4.18.5_1
+suffix=_2
+is_rc=false
 patch_ca0132=true
 with_menuconfig=false
 
@@ -30,10 +31,19 @@ if [ -d "linux-$kernel_version" ]; then
 	echo "kernel source already downloaded, skipping download & extraction..."
 else
 	echo "downloading kernel source"
-	wget https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-$kernel_version.tar.xz
+	if [ $is_rc = true ]; then
+		wget https://git.kernel.org/torvalds/t/linux-$kernel_version.tar.gz
+	else
+		wget https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-$kernel_version.tar.xz
+	fi
 	echo "extracting kernel source"
-	tar xf linux-$kernel_version.tar.xz
-	rm -rf linux-$kernel_version.tar.xz
+	if [ $is_rc = true ]; then
+		tar -xzf linux-$kernel_version.tar.gz
+		rm -rf linux-$kernel_version.tar.gz
+	else
+		tar xf linux-$kernel_version.tar.xz
+		rm -rf linux-$kernel_version.tar.xz
+	fi
 fi
 
 cd linux-$kernel_version
@@ -45,7 +55,6 @@ if [ $patch_ca0132 = true ]; then
 		echo "kernel $kernel_version is already patched, skipping patch step"
 	else
 		echo "applying patch for Creative AE-5"
-		wget https://doc-10-7g-docs.googleusercontent.com/docs/securesc/3rv7d0gn6bq451nj9shjudutgsaj8b8q/c3ds1vcgi48b042hlsdrn2csgjjtcf0d/1535119200000/02934445194421362384/11732050884458976909/1vjA-3bGgK2Pqe-BDtNV2WjyqCoLoY7Sc?e=download
 		rm -rf sound/pci/hda/patch_ca0132.c
 		cp ../patch_ca0132.c sound/pci/hda/
 		if [ -d "patched" ]; then
@@ -54,7 +63,7 @@ if [ $patch_ca0132 = true ]; then
 			mkdir $src_dir/patched
 			mkdir $src_dir/patched/$kernel_version
 		fi
-		mv $src_dir/patch_ca0132.c $src_dir/patched/$kernel_version/patch_ca0132.c
+		cp $src_dir/patch_ca0132.c $src_dir/patched/$kernel_version/patch_ca0132.c
 	fi
 else
 	echo "patch option set to false"
@@ -64,7 +73,7 @@ fi
 if [ -f ".config" ]; then
 	echo ".config found"
 else
-	if [ -f "config-$use_config_version" ]; then
+	if [ -f "/boot/config-$use_config_version" ]; then
 		echo "config-$use_config_version copied to.config"
 		cp /boot/config-$use_config_version .config
 	else
