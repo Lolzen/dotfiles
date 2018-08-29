@@ -1,2 +1,5 @@
 #!/bin/sh
-APULSE_CAPTURE_DEVICE=plughw:2,0 APULSE_PLAYBACK_DEVICE=plughw:2,0 apulse ~/Discord/Discord
+# use the motherboard's mic (ALC1220)
+#APULSE_CAPTURE_DEVICE=plughw:2,0 APULSE_PLAYBACK_DEVICE=plughw:2,0 apulse ~/Discord/Discord
+# use crative Soundblaster AE-5's mic
+APULSE_CAPTURE_DEVICE=plughw:0,0 APULSE_PLAYBACK_DEVICE=plughw:2,0 apulse ~/Discord/Discord
