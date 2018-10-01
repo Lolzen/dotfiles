@@ -69,7 +69,7 @@ our $SCHEMA = [
     {item => ['urxvt -geometry 109x12+20+873 -e ncmpcpp',         'ncmpcpp',          'undef']},
     #{item => ['urxvt -geometry 110x10+910+353 -e ~/bin/mpdviz --icolor=true --scale=2 --step=8 -v spectrum -d false',         'mpdviz (spectrum)',          'undef']},
     #{item => ['urxvt -geometry 97x7+20+738 -e ~/bin/mpdviz --icolor=true --scale=2 --step=8 -v spectrum -d false',         'mpdviz (spectrum)',          'undef']},
-    {item => ['urxvt -geometry 109x8+20+738 -e ~/bin/mpdviz --icolor=true --scale=2 --step=8 -v spectrum -d false',         'mpdviz (spectrum)',          'undef']},    
+    {item => ['urxvt -geometry 109x8+20+738 -e mpdviz --icolor=true --scale=2 --step=8 -v spectrum -d false',         'mpdviz (spectrum)',          'undef']},    
     #{item => ['urxvt -geometry 110x10+910+557 -e ~/bin/mpdviz --icolor=true --scale=1 --step=8 -v wave -d false',         'mpdviz (wave)',          'undef']},
     #{item => ['urxvt -geometry 110x10+910+557 -e ~/bin/lyriki.sh',         'lyrics',          'undef']},
     #{item => ['urxvt -geometry 100x23+1010+367 -e weechat-curses -p -s',         'weechat',          'undef']},
