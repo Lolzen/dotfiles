@@ -27,6 +27,7 @@ volumeicon & #system tray volumeicon
 nitrogen --restore & #restore selected wallpaper
 urxvt & #Start a terminal on boot
 conky -c ~/.conkyrc & #start conky
+cadence-session-start --system-start #autostart cadence which handles jack and starts jack-server on login
 
 #colctl --mode spectrumwave --animation_speed 3 -c 0,0,0 #set kraken x72 to color spectrum with krakenx
 #colctl -c 0,0,0 #set text to 0 with krakenx
