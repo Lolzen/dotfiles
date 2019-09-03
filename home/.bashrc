@@ -31,6 +31,7 @@ alias shutdown='sudo shutdown -h now'
 alias sf='neofetch'
 alias obclass='obxprop | grep "^_OB_APP"'
 alias teamspeak='sh ~/TeamSpeak3-Client-linux_amd64/ts3client_runscript.sh'
+alias discord='APULSE_CAPTURE_DEVICE=plughw:2,0 APULSE_PLAYBACK_DEVICE=plughw:2,0 apulse ~/Discord/Discord'
 
 # [void linux specific]
 if [ $HOSTNAME = "void-pc" ] || [ $HOSTNAME = "void-netbook" ]; then
