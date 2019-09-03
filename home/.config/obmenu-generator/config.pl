@@ -20,7 +20,7 @@
 
     | substitutions       : Substitute, by using a regex, in the values from the desktop files.
                             Example: [
-                                {key => 'Exec', re => qr/xterm/, value => 'sakura', global => 1},
+                                {key => 'Exec', re => qr/xterm/, value => 'tilix', global => 1},
                             ],
 
 || ICON SETTINGS
@@ -60,12 +60,12 @@ our $CONFIG = {
                              keep_unknown_categories => 1,
                              skip_entry              => undef,
                              skip_filename_re        => qr/^(?>avahi|b(?>vnc|ssh)| #hide avahi entries
-                                                                                                                                                                                                                                                                                                                                                							|Thunar|exo| #hide thunar related entries; use "File Manager with dbus insead"
-                                                                                                                                                                                                                                                                                                                                                							|compton| #hide compton entry; it's autostarted on boot
-                                                                                                                                                                                                                                                                                                                                                							|clipit| #hide clipit entry; autostarted on boot
-                                                                                                                                                                                                                                                                                                                                                							|xterm|uxterm|urxvt| #hide terminal entries; some are dependencies never used, there is the "Terminal" entry and it's autostarded
-                                                                                                                                                                                                                                                                                                                                                							|qv4l2|qdbus|designer-qt4|assistant-qt4|linguist-qt4| #hide qt4 entries
-                                                                                                                                                                                                                                                                                                                                                							|xfce4-about)/,
+                                                                                                                                                                                                                                                                                                                                                                                                        							|Thunar|exo| #hide thunar related entries; use "File Manager with dbus insead"
+                                                                                                                                                                                                                                                                                                                                                                                                        							|compton| #hide compton entry; it's autostarted on boot
+                                                                                                                                                                                                                                                                                                                                                                                                        							|clipit| #hide clipit entry; autostarted on boot
+                                                                                                                                                                                                                                                                                                                                                                                                        							|xterm|uxterm|urxvt| #hide terminal entries; some are dependencies never used, there is the "Terminal" entry and it's autostarded
+                                                                                                                                                                                                                                                                                                                                                                                                        							|qv4l2|qdbus|designer-qt4|assistant-qt4|linguist-qt4| #hide qt4 entries
+                                                                                                                                                                                                                                                                                                                                                                                                        							|xfce4-about)/,
                              skip_svg_icons          => 1,
                              strict_icon_dirs        => undef,
                              substitutions           => undef,
@@ -76,5 +76,5 @@ our $CONFIG = {
   "locale_support"      => 1,
   "missing_icon"        => "gtk-missing-image",
   "terminal"            => "urxvt",
-  "VERSION"             => 0.84,
+  "VERSION"             => 0.85,
 }

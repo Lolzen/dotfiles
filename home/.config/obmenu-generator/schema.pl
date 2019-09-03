@@ -79,6 +79,9 @@ our $SCHEMA = [
     #{item => ['pidgin',        'Instant messaging', 'system-users']},
     {item => ['sh /home/gee/TeamSpeak3-Client-linux_amd64/ts3client_runscript.sh',           'TS3',         'undef']},
     {item => ['~/bin/discord',           'Discord',         'undef']},
+#    {item => ['~/Discord/Discord',           'Discord (direct)',         'undef']},
+
+
 
     #{sep => 'Applications'},
     {sep => 'Menu'},
