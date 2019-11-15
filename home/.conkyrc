@@ -47,7 +47,7 @@ conky.config = {
 	default_color = 'white',
 	default_shade_color = 'black',
 	default_outline_color = 'white',
-	color1 = '33b5e5', --> blue <
+	color1 = '93C35D', --> green <
 	color2 = 'ffffff', --> white <
 
 	-->> mpd stuff <<--
