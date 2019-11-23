@@ -51,7 +51,7 @@
 }
 
 .yotsuba_b_new .backlink a {
-    color: #33b5e5;
+    color: #C38277;
 }
 
 a.open-qr-link {
@@ -68,7 +68,7 @@ blockquote.postMessage {
 }
 
 blockquote.postMessage a {
-    color: #33b5e5;
+    color: #C38277;
     text-decoration: none;
 }
 
@@ -90,7 +90,7 @@ body.board_g.yotsuba_b_new.ws form {
 
 div.boardBanner {
     background-color: #222222;
-    color: #33b5e5;
+    color: #C38277;
 }
 
 div.boardSubtitle {
@@ -123,7 +123,7 @@ div.deleteform input {
 
 div.drag.postblock {
     background-color: #444444;
-    color: #33b5e5;
+    color: #C38277;
 }
 
 div.extPanel.reply {
@@ -144,7 +144,7 @@ div.globalMessage.hideMobile {
 }
 
 div.globalMessage.hideMobile strong {
-    color: #33b5e5;
+    color: #C38277;
 }
 
 div.navLinks.desktop {
@@ -257,7 +257,7 @@ span.boardList {
 
 span.boardList a {
     background-color: #222222;
-    color: #33b5e5;
+    color: #C38277;
 }
 
 span.dateTime {
@@ -283,7 +283,7 @@ span.postertrip {
 }
 
 span.quote {
-    color: #338844;
+    color: #93C35D;
 }
 
 span.subject {
