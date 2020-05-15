@@ -35,6 +35,12 @@ alias remove='sudo xbps-remove'
 alias search='sudo xbps-query -Rs'
 alias kpurge='sudo vkpurge rm all'
 
+# switching between python 2/3 (repos still needs python2)
+#sudo xbps-alternatives -s python python2
+
+# WoW Addon updater
+alias cb='"/home/gee/Games/world-of-warcraft/drive_c/Program Files (x86)/World of Warcraft/_retail_/CurseBreaker"'
+
 # Android aliases
 alias android='sh /home/gee/android-sdk-linux/tools/android'
 
