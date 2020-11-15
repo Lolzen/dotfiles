@@ -16,6 +16,13 @@ ctl.snd_card {
     device 0
 }
 
+# what you hear (soundcard loopback)
+pcm.snd_loop {
+    type hw
+    card 0
+    device 2
+}
+
 # onboard microphone
 pcm.snd_mboard {
     type hw
@@ -88,5 +95,26 @@ pcm.dmixerPulse {
         period_size 1024
         buffer_size 4096
         rate 44100
+    }
+}
+
+#-----#
+# OBS #
+#-----#
+pcm.out {
+    type dsnoop
+    ipc_key 2048
+    ipc_perm 0666
+    slave.pcm "snd_loop"
+    slave
+    {
+        period_time 0
+        period_size 1024
+        buffer_size 4096
+        rate 44100
+    }
+    bindings {
+        0 0
+        1 1
     }
 }
