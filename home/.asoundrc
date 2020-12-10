@@ -38,6 +38,7 @@ pcm.dmixer {
     slave.pcm "snd_card"
     slave {
         channels 2
+        buffer_size 4096
     }
 }
 
