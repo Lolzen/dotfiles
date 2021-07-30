@@ -1,5 +1,0 @@
-#!/bin/sh
-export APULSE_CAPTURE_DEVICE="plug:duplexPulse" 
-export APULSE_PLAYBACK_DEVICE="plug:duplexPulse"
-apulse ~/Discord/Discord
-
